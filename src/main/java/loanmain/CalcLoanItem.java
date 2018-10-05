@@ -14,6 +14,7 @@
  */
 package loanmain;
 
+import com.google.common.eventbus.EventBus;
 import loansolver.OneParamFuncItf;
 import loansolver.Solver;
 import loansolver.SolverItf;
@@ -217,8 +218,8 @@ public final class CalcLoanItem {
      * @param pItem2 the second loan item
      * @return pItem1 - pItem2
      */
-    public static LoanItem diff(final LoanItem pItem1, final LoanItem pItem2) {
-        LoanItem lItem = new LoanItem();
+    public static LoanItem diff(EventBus eventBus, final LoanItem pItem1, final LoanItem pItem2) {
+        LoanItem lItem = new LoanItem(eventBus);
         lItem.setName(pItem1.getName() + " - " + pItem2.getName());
         lItem.setAmount(pItem1.getAmount() - pItem2.getAmount());
         lItem.setDuree(pItem1.getDuree() - pItem2.getDuree());

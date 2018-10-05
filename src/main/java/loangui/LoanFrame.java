@@ -145,12 +145,15 @@ public class LoanFrame extends JFrame {
                     cloneBtn.getAction().setEnabled(!lIsDiffed);
                     simulBtn.getAction().setEnabled(!lIsDiffed);
                     controler.setDiffed(lIsDiffed);
-                    entryPanel.itemChanged(lItem);
-                    optionPanel.itemChanged(lItem);
+                    //entryPanel.itemChanged(lItem);
+                    //optionPanel.itemChanged(lItem);
+                    eventBus.post(new loanmain.ChangeEvent(this,lItem));
                     if (lIsDiffed) {
-                        ((TabbedPanel) tabPane.getSelectedComponent()).itemDiffed(model.getFirst(lItem), model.getSecond(lItem));
+                        //((TabbedPanel) tabPane.getSelectedComponent()).itemDiffed(model.getFirst(lItem), model.getSecond(lItem));
+                    	eventBus.post(new loanmain.DiffEvent(this,model.getFirst(lItem), model.getSecond(lItem)));
                     } else {
-                        ((TabbedPanel) tabPane.getSelectedComponent()).itemChanged(lItem);
+                        //((TabbedPanel) tabPane.getSelectedComponent()).itemChanged(lItem);
+                    	
                     }
                 }
             }
@@ -188,6 +191,8 @@ public class LoanFrame extends JFrame {
         setSize(650, 450);
         setResizable(false);
         FrameUtils.screenCenter(this);
+        eventBus.register(entryPanel);
+        eventBus.register(optionPanel);
     }
 
     /**
@@ -278,7 +283,7 @@ public class LoanFrame extends JFrame {
                 CompareDialog lDlg = new CompareDialog(LoanFrame.this, model);
                 lDlg.setVisible(true);
                 if (lDlg.getModalResult() == CompareDialog.ModalResult.VALID) {
-                    LoanItem lItem = CalcLoanItem.diff(lDlg.getFirst(), lDlg.getSecond());
+                    LoanItem lItem = CalcLoanItem.diff(eventBus,lDlg.getFirst(), lDlg.getSecond());
                     addItem(lItem, lDlg.getFirst(), lDlg.getSecond());
                 }
             }
@@ -354,10 +359,8 @@ public class LoanFrame extends JFrame {
      */
     private void addItem(final LoanItem pItem) {
         int lNb = tabPane.getTabCount();
-        pItem.addChangeListener(entryPanel);
-        pItem.addChangeListener(optionPanel);
         TabbedPanel lTabbedPanel = new TabbedPanel();
-        pItem.addChangeListener(lTabbedPanel);
+        eventBus.register(lTabbedPanel);
         if (pItem.getName() == null) {
             pItem.setName(String.valueOf(lNb + 1));
         }
@@ -374,10 +377,8 @@ public class LoanFrame extends JFrame {
      * @param pItem2 the second item
      */
     private void addItem(final LoanItem pItem, final LoanItem pItem1, final LoanItem pItem2) {
-        pItem.addChangeListener(entryPanel);
-        pItem.addChangeListener(optionPanel);
         TabbedPanel lTabbedPanel = new TabbedPanel();
-        pItem.addDiffListener(lTabbedPanel);
+        eventBus.register(lTabbedPanel);
         model.add(pItem, pItem1, pItem2);
         Icon lIcon = FrameUtils.createImageIcon("emprunt.png", "");
         tabPane.addTab(pItem.getName(), lIcon, lTabbedPanel, translate("tabTooltip"));

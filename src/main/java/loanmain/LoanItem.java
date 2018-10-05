@@ -6,6 +6,7 @@ package loanmain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import com.google.common.eventbus.EventBus;
 
 /**
  * This class represents the item of a loan, with its entries, options and results.
@@ -43,13 +44,9 @@ public final class LoanItem implements Cloneable, Serializable {
      */
     private LoanType type = LoanType.MENSUALITE;
     /**
-     * List of components that are interested in item change events
+     * EventBus that will call trigger the events
      */
-    private transient List<ChangeListener> changeListeners = null;
-    /**
-     * List of components that are interested in item diff events
-     */
-    private transient List<DiffListener> diffListeners = null;
+    private EventBus eventBus = null;
     /**
      * Name of this loan item
      */
@@ -89,8 +86,8 @@ public final class LoanItem implements Cloneable, Serializable {
     /**
      * Default constructor
      */
-    public LoanItem() {
-        changeListeners = new ArrayList<ChangeListener>();
+    public LoanItem(EventBus eventBus) {
+        this.eventBus = eventBus;
     }
 
     /**
@@ -100,7 +97,7 @@ public final class LoanItem implements Cloneable, Serializable {
      */
     @Override
     public LoanItem clone() {
-        LoanItem lClone = new LoanItem();
+        LoanItem lClone = new LoanItem(eventBus);
         lClone.setAmount(getAmount());
         lClone.setDuree(getDuree());
         lClone.setFrais(getFrais());
@@ -115,66 +112,14 @@ public final class LoanItem implements Cloneable, Serializable {
 
 //Listeners
     /**
-     * Add a new listener
-     *
-     * @param pListener the new listener
-     */
-    public void addChangeListener(final ChangeListener pListener) {
-        if (changeListeners == null) {
-            //This happens after a deserialization
-            changeListeners = new ArrayList<ChangeListener>();
-        }
-        if (!changeListeners.contains(pListener)) {
-            changeListeners.add(pListener);
-        }
-    }
-
-    /**
-     * Remove a listener
-     *
-     * @param pListener the listener to remove from the list
-     */
-    public void removeChangeListener(final ChangeListener pListener) {
-        if (changeListeners.contains(pListener)) {
-            changeListeners.remove(pListener);
-        }
-    }
-
-    /**
      * Aware the listeners that this item has changed
      */
     public void fireItemChanged() {
-        for (ChangeListener lListener : changeListeners) {
-            lListener.itemChanged(this);
-        }
+//        for (ChangeListener lListener : changeListeners) {
+//            lListener.itemChanged(this);
+//        }
+        eventBus.post(new ChangeEvent(this, this));
     }
-
-    /**
-     * Add a new listener
-     *
-     * @param pListener the new listener
-     */
-    public void addDiffListener(final DiffListener pListener) {
-        if (diffListeners == null) {
-            //This happens after a deserialization
-            diffListeners = new ArrayList<DiffListener>();
-        }
-        if (!diffListeners.contains(pListener)) {
-            diffListeners.add(pListener);
-        }
-    }
-
-    /**
-     * Remove a listener
-     *
-     * @param pListener the listener to remove from the list
-     */
-    public void removeDiffListener(final DiffListener pListener) {
-        if (diffListeners.contains(pListener)) {
-            diffListeners.remove(pListener);
-        }
-    }
-
     /**
      * Aware the listeners that this item is diffed
      *
@@ -182,9 +127,10 @@ public final class LoanItem implements Cloneable, Serializable {
      * @param pItem2 the second loan item
      */
     public void fireItemDiffed(final LoanItem pItem1, final LoanItem pItem2) {
-        for (DiffListener lListener : diffListeners) {
-            lListener.itemDiffed(pItem1, pItem2);
-        }
+//        for (DiffListener lListener : diffListeners) {
+//            lListener.itemDiffed(pItem1, pItem2);
+//        }
+    	eventBus.post(new DiffEvent(this, pItem1, pItem2));
     }
 
 //getters and setters

@@ -2,18 +2,29 @@
  * Components that are interested in LoanItem changes should implement this interface.
  */
 package loanmain;
+import java.util.EventObject;
 
 /**
  * Components that are interested in LoanItem changes should implement this interface.
  *
  * @author jean-blas imbert
  */
-public interface ChangeListener {
-
+public class ChangeEvent extends EventObject {
     /**
      * Function should be fired when the item has changed
      *
      * @param pItem the changed item
      */
-    void itemChanged(final LoanItem pItem);
+	private LoanItem _LoanItem;
+	
+	public ChangeEvent(Object source, LoanItem loanItem) {
+        super(source);
+        this._LoanItem = loanItem;
+    }
+	
+	public LoanItem GetLoadItem()
+	{
+		return _LoanItem;
+	}
+	//void itemChanged(final LoanItem pItem)
 }

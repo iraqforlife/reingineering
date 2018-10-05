@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 import loanmain.CalcLoanItem;
 import loanmain.ChangeEvent;
 import loanmain.DiffEvent;
-import loanmain.LoanItem;
 import loanutils.FormatterFactory;
 import loanutils.FrameUtils;
 import static loanutils.MyBundle.translate;

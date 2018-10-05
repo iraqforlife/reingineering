@@ -4,6 +4,7 @@
 package loangui;
 
 import java.awt.BorderLayout;
+import com.google.common.eventbus.EventBus;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
@@ -103,7 +104,9 @@ public class LoanFrame extends JFrame {
      * The loan controler
      */
     private LoanControler controler = new LoanControler();
+    
 
+    private EventBus eventBus = new EventBus();
     /**
      * Constructor
      */
@@ -264,7 +267,7 @@ public class LoanFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent pEvent) {
-                addItem(new LoanItem());
+                addItem(new LoanItem(eventBus));
             }
         });
         compareBtn = JbiBtnFactory.COMPARE.create(new AbstractAction() {

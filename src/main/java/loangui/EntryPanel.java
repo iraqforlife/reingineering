@@ -13,7 +13,10 @@ import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import loanmain.ChangeListener;
+
+import com.google.common.eventbus.Subscribe;
+
+import loanmain.ChangeEvent;
 import loanmain.LoanControler;
 import loanmain.LoanItem;
 import loanutils.FloatJTextField;
@@ -26,7 +29,7 @@ import static loanutils.MyBundle.translate;
  *
  * @author jean-blas imbert
  */
-public class EntryPanel extends JPanel implements ChangeListener {
+public class EntryPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     /**
@@ -173,16 +176,18 @@ public class EntryPanel extends JPanel implements ChangeListener {
      *
      * @param pItem the Loan item corresponding to this panel
      */
-    @Override
-    public void itemChanged(final LoanItem pItem) {
-        monTF.setText(FormatterFactory.fmtCurrencyNoSymbol(pItem.getMensualite()));
-        tauTF.setText(FormatterFactory.fmtCurrencyNoSymbol(pItem.getTaux()));
-        timTF.setText(FormatterFactory.fmtCurrencyNoSymbol(pItem.getDuree()));
-        amoTF.setText(FormatterFactory.fmtCurrencyNoSymbol(pItem.getAmount()));
-        amoCB.setSelected(pItem.getLoanType() != LoanItem.LoanType.MONTANT);
-        tauCB.setSelected(pItem.getLoanType() != LoanItem.LoanType.TAUX);
-        timCB.setSelected(pItem.getLoanType() != LoanItem.LoanType.DUREE);
-        monCB.setSelected(pItem.getLoanType() != LoanItem.LoanType.MENSUALITE);
+    //@Override
+    //public void itemChanged(final LoanItem pItem) {
+    @Subscribe
+    public void itemChanged(ChangeEvent event) {
+        monTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getMensualite()));
+        tauTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getTaux()));
+        timTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getDuree()));
+        amoTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getAmount()));
+        amoCB.setSelected(event.GetLoadItem().getLoanType() != LoanItem.LoanType.MONTANT);
+        tauCB.setSelected(event.GetLoadItem().getLoanType() != LoanItem.LoanType.TAUX);
+        timCB.setSelected(event.GetLoadItem().getLoanType() != LoanItem.LoanType.DUREE);
+        monCB.setSelected(event.GetLoadItem().getLoanType() != LoanItem.LoanType.MENSUALITE);
         monTF.setEditable(!controler.isDiffed());
         tauTF.setEditable(!controler.isDiffed());
         timTF.setEditable(!controler.isDiffed());

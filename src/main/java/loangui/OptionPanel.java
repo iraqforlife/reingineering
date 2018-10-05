@@ -9,10 +9,12 @@ import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.google.common.eventbus.Subscribe;
+
 import loanmain.CalcLoanItem;
-import loanmain.ChangeListener;
 import loanmain.LoanControler;
-import loanmain.LoanItem;
+import loanmain.ChangeEvent;
 import loanutils.FloatJTextField;
 import loanutils.FormatterFactory;
 import loanutils.FrameUtils;
@@ -23,7 +25,7 @@ import static loanutils.MyBundle.translate;
  *
  * @author jean-blas imbert
  */
-public class OptionPanel extends JPanel implements ChangeListener {
+public class OptionPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
     /**
@@ -85,13 +87,15 @@ public class OptionPanel extends JPanel implements ChangeListener {
      *
      * @param pItem the Loan item corresponding to this panel
      */
-    @Override
-    public void itemChanged(final LoanItem pItem) {
-        afeTF.setText(FormatterFactory.fmtCurrencyNoSymbol(pItem.getFrais()));
-        assTF.setText(FormatterFactory.fmtCurrencyNoSymbol(pItem.getInsurance()));
-        Double lNotFee = CalcLoanItem.computeNotaryFee(pItem);
+    //@Override
+    //public void itemChanged(final LoanItem pItem) {
+	@Subscribe
+    public void itemChanged(ChangeEvent event) {
+        afeTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getFrais()));
+        assTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getInsurance()));
+        Double lNotFee = CalcLoanItem.computeNotaryFee(event.GetLoadItem());
         notTF.setText(FormatterFactory.fmtCurrencyNoSymbol(lNotFee.floatValue()));
-        salTF.setText(FormatterFactory.fmtCurrencyNoSymbol(pItem.getSalary()));
+        salTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getSalary()));
         afeTF.setEditable(!controler.isDiffed());
         assTF.setEditable(!controler.isDiffed());
         notTF.setEditable(!controler.isDiffed());

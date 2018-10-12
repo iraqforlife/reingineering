@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import loanutils.FrameUtils;
-import static loanutils.MyBundle.translate;
+import loanmain.FrameUtils;
+import static loanmain.MyBundle.translate;
 
 /**
  * The underlying model of the application (collection of LoanItem).

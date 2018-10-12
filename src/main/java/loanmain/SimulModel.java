@@ -4,7 +4,7 @@
 package loanmain;
 
 import javax.swing.table.AbstractTableModel;
-import static loanutils.MyBundle.translate;
+import static loanmain.MyBundle.translate;
 
 /**
  * The model for a loan simulation

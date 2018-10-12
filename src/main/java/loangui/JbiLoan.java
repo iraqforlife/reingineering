@@ -1,16 +1,15 @@
 /*
  * Main entry point
  */
-package loanmain;
+package loangui;
 
-import loangui.ChooseLanguageDialog;
-import loangui.LoanFrame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Locale;
 import javax.swing.JOptionPane;
+
+import loanmain.MyBundle;
 import loanutils.FormatterFactory;
-import loanutils.MyBundle;
 
 /**
  * The main class

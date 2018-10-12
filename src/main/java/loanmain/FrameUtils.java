@@ -1,7 +1,9 @@
 /*
  * A utility package
  */
-package loanutils;
+package loanmain;
+
+import static loanmain.MyBundle.translate;
 
 import java.awt.Component;
 import java.awt.FlowLayout;
@@ -26,9 +28,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import loanmain.CalcLoanItem;
-import loanmain.LoanItem;
-import static loanutils.MyBundle.translate;
 
 /**
  * Utility class

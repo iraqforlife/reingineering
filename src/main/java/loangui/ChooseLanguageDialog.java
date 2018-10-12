@@ -15,9 +15,9 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import loanutils.FrameUtils;
+import loanmain.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanutils.MyBundle.translate;
+import static loanmain.MyBundle.translate;
 
 /**
  * Frame that displays an option buttons group to choose the language at the beginning of the application.

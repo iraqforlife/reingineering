@@ -36,9 +36,9 @@ import loanmain.CalcLoanItem;
 import loanmain.LoanControler;
 import loanmain.LoanItem;
 import loanmain.LoanModel;
-import loanutils.FrameUtils;
+import loanmain.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanutils.MyBundle.translate;
+import static loanmain.MyBundle.translate;
 
 /**
  * The main application frame.

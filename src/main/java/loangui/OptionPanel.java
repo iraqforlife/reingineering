@@ -17,8 +17,8 @@ import loanmain.LoanControler;
 import loanmain.ChangeEvent;
 import loanutils.FloatJTextField;
 import loanutils.FormatterFactory;
-import loanutils.FrameUtils;
-import static loanutils.MyBundle.translate;
+import loanmain.FrameUtils;
+import static loanmain.MyBundle.translate;
 
 /**
  * The panels for options components

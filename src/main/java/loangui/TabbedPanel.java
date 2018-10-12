@@ -12,8 +12,8 @@ import loanmain.CalcLoanItem;
 import loanmain.ChangeEvent;
 import loanmain.DiffEvent;
 import loanutils.FormatterFactory;
-import loanutils.FrameUtils;
-import static loanutils.MyBundle.translate;
+import loanmain.FrameUtils;
+import static loanmain.MyBundle.translate;
 import com.google.common.eventbus.Subscribe;
 import java.util.concurrent.TimeUnit;
 

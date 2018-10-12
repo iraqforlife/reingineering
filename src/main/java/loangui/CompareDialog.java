@@ -19,9 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import loanmain.LoanItem;
 import loanmain.LoanModel;
-import loanutils.FrameUtils;
+import loanmain.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanutils.MyBundle.translate;
+import static loanmain.MyBundle.translate;
 
 /**
  * Set the two loans to compare

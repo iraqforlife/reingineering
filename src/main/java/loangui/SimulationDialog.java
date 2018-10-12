@@ -22,9 +22,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import loanmain.LoanItem;
 import loanmain.SimulModel;
 import loanutils.FormatterFactory;
-import loanutils.FrameUtils;
+import loanmain.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanutils.MyBundle.translate;
+import static loanmain.MyBundle.translate;
 
 /**
  *

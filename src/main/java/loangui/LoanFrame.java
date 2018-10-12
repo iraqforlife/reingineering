@@ -29,16 +29,16 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import static loanutils.MyBundle.translate;
+
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import loanmain.CalcLoanItem;
 import loanmain.LoanControler;
 import loanmain.LoanItem;
 import loanmain.LoanModel;
-import loanmain.FrameUtils;
+import loanutils.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanmain.MyBundle.translate;
 
 /**
  * The main application frame.

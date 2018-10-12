@@ -10,6 +10,7 @@ import java.util.EventObject;
  *
  * @author jean-blas imbert
  */
+@SuppressWarnings("serial")
 public class DiffEvent extends EventObject {
     /**
      * Function should be fired when the item has changed

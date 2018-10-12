@@ -3,6 +3,8 @@
  */
 package loangui;
 
+import static loanutils.MyBundle.translate;
+
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import javax.swing.BorderFactory;
@@ -17,8 +19,7 @@ import loanmain.LoanControler;
 import loanmain.ChangeEvent;
 import loanutils.FloatJTextField;
 import loanutils.FormatterFactory;
-import loanmain.FrameUtils;
-import static loanmain.MyBundle.translate;
+import loanutils.FrameUtils;
 
 /**
  * The panels for options components

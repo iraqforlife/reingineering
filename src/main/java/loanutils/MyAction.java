@@ -12,6 +12,7 @@ import javax.swing.KeyStroke;
  * A simple action that bears an accelerator key, a tooltip and an icon
  * @author Jean-Blas Imbert
  */
+@SuppressWarnings("serial")
 public abstract class MyAction extends AbstractAction {
 
     /**

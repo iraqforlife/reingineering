@@ -8,8 +8,8 @@ import java.awt.event.WindowEvent;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 
-import loanmain.MyBundle;
 import loanutils.FormatterFactory;
+import loanutils.MyBundle;
 
 /**
  * The main class

@@ -4,6 +4,8 @@
  */
 package loangui;
 
+import static loanutils.MyBundle.translate;
+
 import java.awt.BorderLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -22,9 +24,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import loanmain.LoanItem;
 import loanmain.SimulModel;
 import loanutils.FormatterFactory;
-import loanmain.FrameUtils;
+import loanutils.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanmain.MyBundle.translate;
 
 /**
  *

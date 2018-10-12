@@ -3,13 +3,13 @@
  */
 package loanmain;
 
+import static loanutils.MyBundle.translate;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import loanmain.FrameUtils;
-import static loanmain.MyBundle.translate;
 
 /**
  * The underlying model of the application (collection of LoanItem).
@@ -142,12 +142,33 @@ public class LoanModel implements Serializable {
         StringBuilder lBuilder = new StringBuilder();
         for (LoanItem lItem : data) {
             if (!isDiffed(lItem)) {
-                lBuilder.append(FrameUtils.toCsv(lItem)).append(lNewLine);
+                lBuilder.append(toCsv(lItem)).append(lNewLine);
             }
         }
         return lBuilder.toString();
     }
 
+    /**
+     * Return the string value of this in .csv format
+     *
+     * @param pItem the item loan
+     * @return the string value of this in .csv format
+     */
+    public String toCsv(final LoanItem pItem) {
+        final String lSep = ";";
+        StringBuilder lBuilder = new StringBuilder();
+        Double lMensHorsAss = CalcLoanItem.computeMensHorsAss(pItem);
+        Double lMensAss = CalcLoanItem.computeMensAss(pItem);
+        Double lNotFee = CalcLoanItem.computeNotaryFee(pItem);
+        Double lTauxEff = CalcLoanItem.calcTauxEff(pItem);
+        lBuilder.append(pItem.getName()).append(lSep).append(pItem.getAmount()).append(lSep).append(pItem.getTaux())
+                .append(lSep).append(pItem.getMensualite()).append(lSep).append(lMensHorsAss.floatValue())
+                .append(lSep).append(lMensAss.floatValue()).append(lSep).append(pItem.getDuree()).append(lSep)
+                .append(pItem.getFrais()).append(lSep).append(pItem.getSalary()).append(lSep)
+                .append(pItem.getInsurance()).append(lSep).append(lNotFee.floatValue()).append(lSep)
+                .append(pItem.getLoanType()).append(lSep).append(lTauxEff.floatValue());
+        return lBuilder.toString();
+    }
     /**
      * Get the size of the data
      *

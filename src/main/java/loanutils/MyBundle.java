@@ -1,7 +1,7 @@
 /*
  * Singleton that deals with a single resource bundle
  */
-package loanmain;
+package loanutils;
 
 import java.util.Locale;
 import java.util.MissingResourceException;

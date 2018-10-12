@@ -11,8 +11,6 @@
  */
 package loanmain;
 
-import static loanmain.LoanItem.LoanType.DUREE;
-
 /**
  * Loan controler that makes the MVC model complete.<BR>
  * Link between the TabbedPane (result) and the Entry and Option panels (entries) through the model (data).<BR>

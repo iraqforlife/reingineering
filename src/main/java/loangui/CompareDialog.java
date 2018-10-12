@@ -3,6 +3,8 @@
  */
 package loangui;
 
+import static loanutils.MyBundle.translate;
+
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Window;
@@ -19,9 +21,8 @@ import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import loanmain.LoanItem;
 import loanmain.LoanModel;
-import loanmain.FrameUtils;
+import loanutils.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanmain.MyBundle.translate;
 
 /**
  * Set the two loans to compare
@@ -42,11 +43,11 @@ public class CompareDialog extends JDialog {
     /**
      * First loan selector
      */
-    private JComboBox firstCB = new JComboBox();
+    private JComboBox<LoanItem> firstCB = new JComboBox<LoanItem>();
     /**
      * Second loan selector
      */
-    private JComboBox secondCB = new JComboBox();
+    private JComboBox<LoanItem> secondCB = new JComboBox<LoanItem>();
     /**
      * This doalog modal result depending on the user action
      */

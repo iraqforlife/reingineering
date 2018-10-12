@@ -3,6 +3,8 @@
  */
 package loangui;
 
+import static loanutils.MyBundle.translate;
+
 import java.awt.BorderLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -15,9 +17,9 @@ import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import loanmain.FrameUtils;
+
+import loanutils.FrameUtils;
 import loanutils.JbiBtnFactory;
-import static loanmain.MyBundle.translate;
 
 /**
  * Frame that displays an option buttons group to choose the language at the beginning of the application.

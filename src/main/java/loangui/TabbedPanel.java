@@ -3,6 +3,8 @@
  */
 package loangui;
 
+import static loanutils.MyBundle.translate;
+
 import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
@@ -12,10 +14,9 @@ import loanmain.CalcLoanItem;
 import loanmain.ChangeEvent;
 import loanmain.DiffEvent;
 import loanutils.FormatterFactory;
-import loanmain.FrameUtils;
-import static loanmain.MyBundle.translate;
+import loanutils.FrameUtils;
+
 import com.google.common.eventbus.Subscribe;
-import java.util.concurrent.TimeUnit;
 
 /**
  * This component represent the tabbed pane items panel

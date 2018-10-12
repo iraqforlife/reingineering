@@ -3,6 +3,8 @@
  */
 package loangui;
 
+import static loanutils.MyBundle.translate;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -21,8 +23,7 @@ import loanmain.LoanControler;
 import loanmain.LoanItem;
 import loanutils.FloatJTextField;
 import loanutils.FormatterFactory;
-import loanmain.FrameUtils;
-import static loanmain.MyBundle.translate;
+import loanutils.FrameUtils;
 
 /**
  * The panels for entries components

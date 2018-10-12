@@ -4,11 +4,12 @@
  */
 package loanutils;
 
+import static loanutils.MyBundle.translate;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import static loanmain.MyBundle.translate;
 
 /**
  * Constructs all the buttons needed in the application. The user must still code the action performed
@@ -56,7 +57,7 @@ public enum JbiBtnFactory {
         pAction.putValue(Action.NAME, translate(name));
         pAction.putValue(Action.SHORT_DESCRIPTION, translate(tooltip));
         Object lObj = pAction.getValue(Action.SMALL_ICON);
-        ImageIcon lIcon = lObj != null ? (ImageIcon) lObj : loanmain.FrameUtils.createImageIcon(img, translate(tooltip));
+        ImageIcon lIcon = lObj != null ? (ImageIcon) lObj : loanutils.FrameUtils.createImageIcon(img, translate(tooltip));
         pAction.putValue(Action.SMALL_ICON, lIcon);
         pAction.putValue(Action.LARGE_ICON_KEY, lIcon);
         return new JButton(pAction);

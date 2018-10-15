@@ -107,30 +107,6 @@ public final class LoanItem implements Cloneable, Serializable {
         lClone.setLoanType(getLoanType());
         return lClone;
     }
-
-//Listeners
-    /**
-     * Aware the listeners that this item has changed
-     */
-    public void fireItemChanged() {
-//        for (ChangeListener lListener : changeListeners) {
-//            lListener.itemChanged(this);
-//        }
-        eventBus.post(new ChangeEvent(this, this));
-    }
-    /**
-     * Aware the listeners that this item is diffed
-     *
-     * @param pItem1 the first loan item
-     * @param pItem2 the second loan item
-     */
-    public void fireItemDiffed(final LoanItem pItem1, final LoanItem pItem2) {
-//        for (DiffListener lListener : diffListeners) {
-//            lListener.itemDiffed(pItem1, pItem2);
-//        }
-    	eventBus.post(new DiffEvent(this, pItem1, pItem2));
-    }
-
 //getters and setters
     public Float getAmount() {
         return amount;

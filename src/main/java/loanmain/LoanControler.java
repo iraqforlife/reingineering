@@ -11,6 +11,8 @@
  */
 package loanmain;
 
+import com.google.common.eventbus.EventBus;
+
 /**
  * Loan controler that makes the MVC model complete.<BR>
  * Link between the TabbedPane (result) and the Entry and Option panels (entries) through the model (data).<BR>
@@ -24,7 +26,11 @@ package loanmain;
  * @author jean-blas imbert
  */
 public class LoanControler {
-
+    public LoanControler(EventBus eventBus)
+    {
+        _EventBus = eventBus;
+    }
+    private EventBus _EventBus;
     /**
      * The data model current item
      */
@@ -115,7 +121,7 @@ public class LoanControler {
                 break;
         }
         if (lNewValue != null) {
-            item.fireItemChanged();
+            _EventBus.post(new ChangeEvent(this,item));
         }
     }
 

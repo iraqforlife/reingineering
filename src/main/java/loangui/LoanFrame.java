@@ -277,7 +277,7 @@ public class LoanFrame extends JFrame {
                 CompareDialog lDlg = new CompareDialog(LoanFrame.this, model);
                 lDlg.setVisible(true);
                 if (lDlg.getModalResult() == CompareDialog.ModalResult.VALID) {
-                    LoanItem lItem = CalcLoanItem.diff(eventBus,lDlg.getFirst(), lDlg.getSecond());
+                    LoanItem lItem = CalcLoanItem.diff(lDlg.getFirst(), lDlg.getSecond());
                     addItem(lItem, lDlg.getFirst(), lDlg.getSecond());
                 }
             }

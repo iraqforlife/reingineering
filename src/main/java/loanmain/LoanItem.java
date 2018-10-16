@@ -4,7 +4,6 @@
 package loanmain;
 
 import java.io.Serializable;
-import com.google.common.eventbus.EventBus;
 
 /**
  * This class represents the item of a loan, with its entries, options and results.
@@ -42,10 +41,6 @@ public final class LoanItem implements Cloneable, Serializable {
      */
     private LoanType type = LoanType.MENSUALITE;
     /**
-     * EventBus that will call trigger the events
-     */
-    private EventBus eventBus = null;
-    /**
      * Name of this loan item
      */
     private String name = null;
@@ -82,20 +77,13 @@ public final class LoanItem implements Cloneable, Serializable {
 
 //Methods
     /**
-     * Default constructor
-     */
-    public LoanItem(EventBus eventBus) {
-        this.eventBus = eventBus;
-    }
-
-    /**
      * Clone this
      *
      * @return the clone of this
      */
     @Override
     public LoanItem clone() {
-        LoanItem lClone = new LoanItem(eventBus);
+        LoanItem lClone = new LoanItem();
         lClone.setAmount(getAmount());
         lClone.setDuree(getDuree());
         lClone.setFrais(getFrais());

@@ -273,7 +273,7 @@ public class LoanFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent pEvent) {
-                addItem(new LoanItem(eventBus));
+                addItem(new LoanItem());
             }
         });
         compareBtn = JbiBtnFactory.COMPARE.create(new AbstractAction() {

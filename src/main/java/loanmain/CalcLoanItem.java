@@ -219,7 +219,7 @@ public final class CalcLoanItem {
      * @return pItem1 - pItem2
      */
     public static LoanItem diff(EventBus eventBus, final LoanItem pItem1, final LoanItem pItem2) {
-        LoanItem lItem = new LoanItem(eventBus);
+        LoanItem lItem = new LoanItem();
         lItem.setName(pItem1.getName() + " - " + pItem2.getName());
         lItem.setAmount(pItem1.getAmount() - pItem2.getAmount());
         lItem.setDuree(pItem1.getDuree() - pItem2.getDuree());

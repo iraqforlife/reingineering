@@ -88,9 +88,7 @@ public class OptionPanel extends JPanel {
      *
      * @param pItem the Loan item corresponding to this panel
      */
-    //@Override
-    //public void itemChanged(final LoanItem pItem) {
-	@Subscribe
+    @Subscribe
     public void itemChanged(ChangeEvent event) {
         afeTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getFrais()));
         assTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getInsurance()));

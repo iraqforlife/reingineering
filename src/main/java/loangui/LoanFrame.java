@@ -146,16 +146,9 @@ public class LoanFrame extends JFrame {
                     cloneBtn.getAction().setEnabled(!lIsDiffed);
                     simulBtn.getAction().setEnabled(!lIsDiffed);
                     controler.setDiffed(lIsDiffed);
-                    //entryPanel.itemChanged(lItem);
-                    //optionPanel.itemChanged(lItem);
                     eventBus.post(new loanmain.ChangeEvent(this,lItem));
-                    if (lIsDiffed) {
-                        //((TabbedPanel) tabPane.getSelectedComponent()).itemDiffed(model.getFirst(lItem), model.getSecond(lItem));
+                    if (lIsDiffed) 
                     	eventBus.post(new loanmain.DiffEvent(this,model.getFirst(lItem), model.getSecond(lItem)));
-                    } else {
-                        //((TabbedPanel) tabPane.getSelectedComponent()).itemChanged(lItem);
-                    	
-                    }
                 }
             }
         });

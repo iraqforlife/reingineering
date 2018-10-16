@@ -78,8 +78,6 @@ public class TabbedPanel extends JPanel {
      *
      * @param pItem the Loan item corresponding to this panel
      */
-    //@Override
-    //public void itemChanged(final LoanItem pItem) {
     @Subscribe
     public void itemChanged(ChangeEvent event) {
         Double lMensHorsAss = CalcLoanItem.computeMensHorsAss(event.GetLoadItem());
@@ -114,8 +112,6 @@ public class TabbedPanel extends JPanel {
      * @param pItem1 the first loan item
      * @param pItem2 the second loan item
      */
-    //@Override
-    //public void itemDiffed(final LoanItem pItem1, final LoanItem pItem2) {
     @Subscribe
     public void itemDiffed(DiffEvent event) {
         Double lMensHorsAss1 = CalcLoanItem.computeMensHorsAss(event.GetpItem1());

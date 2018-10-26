@@ -29,6 +29,11 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JSeparator;
 import javax.swing.JTabbedPane;
+
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+
 import static loanutils.MyBundle.translate;
 
 import javax.swing.event.ChangeEvent;
@@ -100,18 +105,19 @@ public class LoanFrame extends JFrame {
      * The data model
      */
     private LoanModel model = new LoanModel();
-    private EventBus eventBus = new EventBus();
+    private EventBus eventBus ;//= new EventBus();
     /**
      * The loan controler
      */
-    private LoanControler controler = new LoanControler(eventBus);
-    
-
-
+    private LoanControler controler;// = new LoanControler(eventBus);
     /**
      * Constructor
      */
     public LoanFrame() {
+    	//injector va retourner les injections necessaire
+		Injector injector = Guice.createInjector(new LoanModule());
+		controler = injector.getInstance(LoanControler.class);
+		eventBus = injector.getInstance(EventBus.class);
         entryPanel = new EntryPanel(controler);
         optionPanel = new OptionPanel(controler);
         init();

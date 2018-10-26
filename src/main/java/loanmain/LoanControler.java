@@ -12,6 +12,7 @@
 package loanmain;
 
 import com.google.common.eventbus.EventBus;
+import com.google.inject.Inject;
 
 /**
  * Loan controler that makes the MVC model complete.<BR>
@@ -26,6 +27,8 @@ import com.google.common.eventbus.EventBus;
  * @author jean-blas imbert
  */
 public class LoanControler {
+	//@Inject indique quel constructeur on veut utiliser pour injecter 
+	@Inject
     public LoanControler(EventBus eventBus)
     {
         _EventBus = eventBus;

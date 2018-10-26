@@ -177,8 +177,6 @@ public class EntryPanel extends JPanel {
      *
      * @param pItem the Loan item corresponding to this panel
      */
-    //@Override
-    //public void itemChanged(final LoanItem pItem) {
     @Subscribe
     public void itemChanged(ChangeEvent event) {
         monTF.setText(FormatterFactory.fmtCurrencyNoSymbol(event.GetLoadItem().getMensualite()));

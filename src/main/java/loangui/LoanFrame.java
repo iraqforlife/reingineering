@@ -152,16 +152,9 @@ public class LoanFrame extends JFrame {
                     cloneBtn.getAction().setEnabled(!lIsDiffed);
                     simulBtn.getAction().setEnabled(!lIsDiffed);
                     controler.setDiffed(lIsDiffed);
-                    //entryPanel.itemChanged(lItem);
-                    //optionPanel.itemChanged(lItem);
                     eventBus.post(new loanmain.ChangeEvent(this,lItem));
-                    if (lIsDiffed) {
-                        //((TabbedPanel) tabPane.getSelectedComponent()).itemDiffed(model.getFirst(lItem), model.getSecond(lItem));
+                    if (lIsDiffed) 
                     	eventBus.post(new loanmain.DiffEvent(this,model.getFirst(lItem), model.getSecond(lItem)));
-                    } else {
-                        //((TabbedPanel) tabPane.getSelectedComponent()).itemChanged(lItem);
-                    	
-                    }
                 }
             }
         });
@@ -279,7 +272,7 @@ public class LoanFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent pEvent) {
-                addItem(new LoanItem(eventBus));
+                addItem(new LoanItem());
             }
         });
         compareBtn = JbiBtnFactory.COMPARE.create(new AbstractAction() {
@@ -290,7 +283,7 @@ public class LoanFrame extends JFrame {
                 CompareDialog lDlg = new CompareDialog(LoanFrame.this, model);
                 lDlg.setVisible(true);
                 if (lDlg.getModalResult() == CompareDialog.ModalResult.VALID) {
-                    LoanItem lItem = CalcLoanItem.diff(eventBus,lDlg.getFirst(), lDlg.getSecond());
+                    LoanItem lItem = CalcLoanItem.diff(lDlg.getFirst(), lDlg.getSecond());
                     addItem(lItem, lDlg.getFirst(), lDlg.getSecond());
                 }
             }

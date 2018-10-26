@@ -27,5 +27,4 @@ public class ChangeEvent extends EventObject {
 	{
 		return _LoanItem;
 	}
-	//void itemChanged(final LoanItem pItem)
 }

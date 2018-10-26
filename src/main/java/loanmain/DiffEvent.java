@@ -34,5 +34,4 @@ public class DiffEvent extends EventObject {
 	{
 		return _pItem2;
 	}
-	//void itemDiffed(final LoanItem pItem1, final LoanItem pItem2);
 }

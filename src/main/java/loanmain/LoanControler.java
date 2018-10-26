@@ -22,7 +22,7 @@ import com.google.inject.Inject;
  * <li>TabbedPane calls the controler (with LoanItem number and Entry/Option panel component changed value)
  * <li>Controler updates the model (the correct LoanItem number)
  * <li>Controler updates the Entry and Option panels (with the correct LoanItem number)
- * </ol>
+ * </ol>s
  *
  * @author jean-blas imbert
  */

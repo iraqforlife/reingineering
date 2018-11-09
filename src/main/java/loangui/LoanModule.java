@@ -5,6 +5,7 @@ import com.google.inject.AbstractModule;
 
 import loanmain.LoanControler;
 
+
 public class LoanModule extends AbstractModule {
 
     private EventBus eventBus = new EventBus();
@@ -18,6 +19,8 @@ public class LoanModule extends AbstractModule {
 		 * Where we will create loanFram, we will use the same instance
 		 * 
 		 */
-		bind(EventBus.class).toInstance(eventBus);		
+		bind(EventBus.class).toInstance(eventBus);
+		//bind interfacer to concreat class.
+		bind(JbiGuiController.class).to(LoanControler.class);
 	}
 }

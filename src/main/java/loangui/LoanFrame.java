@@ -107,16 +107,16 @@ public class LoanFrame extends JFrame {
     private LoanModel model = new LoanModel();
     private EventBus eventBus ;//= new EventBus();
     /**
-     * The loan controler
+     * The loan controller
      */
-    private LoanControler controler;// = new LoanControler(eventBus);
+    private JbiGuiController controler;// = new LoanControler(eventBus);
     /**
      * Constructor
      */
     public LoanFrame() {
     	//injector va retourner les injections necessaire
 		Injector injector = Guice.createInjector(new LoanModule());
-		controler = injector.getInstance(LoanControler.class);
+		controler = injector.getInstance(JbiGuiController.class);
 		eventBus = injector.getInstance(EventBus.class);
         entryPanel = new EntryPanel(controler);
         optionPanel = new OptionPanel(controler);

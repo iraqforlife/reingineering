@@ -107,9 +107,9 @@ public class LoanFrame extends JFrame {
     private LoanModel model = new LoanModel();
     private EventBus eventBus ;//= new EventBus();
     /**
-     * The loan controler
+     * The loan controller
      */
-    private LoanControler controler;// = new LoanControler(eventBus);
+    private JbiGuiController controler;// = new LoanControler(eventBus);
     /**
      * Constructor
      */

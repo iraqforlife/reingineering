@@ -14,6 +14,8 @@ package loanmain;
 import com.google.common.eventbus.EventBus;
 import com.google.inject.Inject;
 
+import loangui.JbiGuiController;
+
 /**
  * Loan controler that makes the MVC model complete.<BR>
  * Link between the TabbedPane (result) and the Entry and Option panels (entries) through the model (data).<BR>
@@ -22,11 +24,11 @@ import com.google.inject.Inject;
  * <li>TabbedPane calls the controler (with LoanItem number and Entry/Option panel component changed value)
  * <li>Controler updates the model (the correct LoanItem number)
  * <li>Controler updates the Entry and Option panels (with the correct LoanItem number)
- * </ol>s
+ * </ol>
  *
  * @author jean-blas imbert
  */
-public class LoanControler {
+public class LoanControler implements JbiGuiController {
 	//@Inject indique quel constructeur on veut utiliser pour injecter 
 	@Inject
     public LoanControler(EventBus eventBus)

@@ -48,7 +48,7 @@ public class OptionPanel extends JPanel {
     /**
      * The loan controler
      */
-    private LoanControler controler = null;
+    private JbiGuiController controler = null;
     /**
      * This field stores the current value when the mouse enter a text field
      */
@@ -57,7 +57,7 @@ public class OptionPanel extends JPanel {
     /**
      * Constructor
      */
-    public OptionPanel(final LoanControler pControler) {
+    public OptionPanel(final JbiGuiController pControler) {
         controler = pControler;
         layoutComponents();
         //Add text field focus listener

@@ -3,7 +3,6 @@ package loangui;
 import com.google.common.eventbus.EventBus;
 import com.google.inject.AbstractModule;
 
-import loanmain.LoanControler;
 
 public class LoanModule extends AbstractModule {
 

@@ -31,7 +31,7 @@ public class LoanControlerTest {
             calc.computeMensHorsAss(lc.getCurrentItem());times=0;
             calc.computeAmount(lc.getCurrentItem());times=0;
             calc.computeRate(lc.getCurrentItem());times=0;
-            eb.post(any); times =1;
+            eb.post((ChangeEvent) any);times =1;
         }};
     }
 
@@ -48,7 +48,8 @@ public class LoanControlerTest {
             calc.computeMensHorsAss(lc.getCurrentItem());times=1;
             calc.computeAmount(lc.getCurrentItem());times=0;
             calc.computeRate(lc.getCurrentItem());times=0;
-            eb.post(any); times =1;
+            //eb.post(any); times =1;
+            eb.post((ChangeEvent) any);times =1;
         }};
     }
 
@@ -65,7 +66,7 @@ public class LoanControlerTest {
             calc.computeMensHorsAss(lc.getCurrentItem());times=0;
             calc.computeAmount(lc.getCurrentItem());times=1;
             calc.computeRate(lc.getCurrentItem());times=0;
-            eb.post(any); times =1;
+            eb.post((ChangeEvent) any);times =1;
         }};
     }
 
@@ -82,7 +83,7 @@ public class LoanControlerTest {
             calc.computeMensHorsAss(lc.getCurrentItem());times=0;
             calc.computeAmount(lc.getCurrentItem());times=0;
             calc.computeRate(lc.getCurrentItem());times=1;
-            eb.post(any); times =1;
+            eb.post((ChangeEvent) any);times =1;
         }};
     }
 }
